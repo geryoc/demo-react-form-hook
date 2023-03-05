@@ -15,6 +15,18 @@ const age = {
   }
 };
 
+const gender = {
+  required: 'El género es requerido',
+  // validate: {
+  //   required: (value, values) => {
+  //     if (!value || value < 1) {
+  //       return "El género es requerido";
+  //     }
+  //     return true;
+  //   }
+  // }
+}
+
 const document = {
   validate: {
     requeridoSiEsMayor: (value, values) => {
@@ -31,7 +43,8 @@ const personFormOptions = {
   firstName,
   lastName,
   age,
-  document
+  document,
+  gender,
 };
 
 export default personFormOptions;

@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FormError } from './FormError';
 import { default as options } from './personFormOptions';
+import { SelectField } from './SelectField';
 import { TextField } from './TextField';
 
 export const PersonForm = () => {
@@ -40,6 +41,16 @@ export const PersonForm = () => {
             error={errors.document}
             register={register("document", options.document)}
             placeholder={'Ingrese documento...'}
+          />
+          <SelectField
+            label={"Género"}
+            error={errors.gender}
+            register={register("gender", options.gender)}
+            options={[
+              { value: 1, text: "Masculino" },
+              { value: 2, text: "Femenino" },
+              { value: 3, text: "Otro" },
+            ]}
           />
           <button type='submit' className='ui fluid button blue' style={{ marginTop: "1500px" }}>Guardar</button>
         </div>
