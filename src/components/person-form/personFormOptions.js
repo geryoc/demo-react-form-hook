@@ -10,13 +10,21 @@ const lastName = {
 const age = {
   required: 'La edad es requerida',
   min: {
-    value: 18,
-    message: 'Debe ser mayor de edad'
+    value: 15,
+    message: 'Debe ser mayor de 15 años'
   }
 };
 
 const document = {
-  required: 'El documento es requerido',
+  validate: {
+    requeridoSiEsMayor: (value, values) => {
+      let result = true;
+      if (!!values.age && values.age >= 18 && !value) {
+        result = "Si es mayor de edad, debe ingresar documento";
+      }
+      return result;
+    }
+  }
 }
 
 const personFormOptions = {
