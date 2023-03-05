@@ -1,6 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { FormError } from './FormError';
 import { default as options } from './personFormOptions';
 import { SelectField } from './SelectField';
 import { TextField } from './TextField';
