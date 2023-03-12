@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux';
+import { setFormValues } from '../../redux/actions/personFormActions';
 import { default as options } from './personFormOptions';
 import { SelectField } from './SelectField';
 import { TextField } from './TextField';
 
 export const PersonForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const dispatch = useDispatch();
+
+  const reduxFormValues = useSelector((state) => state.personForm);
+
+  const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 
   const onSubmitForm = (data) => {
     console.log("Submit Form", data);
   };
+
+  // Actualizar redux con los valores del state del formulario
+  useEffect(() => {
+    const subscription = watch((formValues) => dispatch(setFormValues(formValues)));
+    return () => subscription.unsubscribe();
+  }, [watch, dispatch]);
+
+  useEffect(() => {
+    // Inicializar el estado del formulario con los valores de redux
+    reset(reduxFormValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className='container'>

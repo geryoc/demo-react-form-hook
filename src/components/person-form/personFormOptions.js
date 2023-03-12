@@ -12,7 +12,16 @@ const age = {
   min: {
     value: 15,
     message: 'Debe ser mayor de 15 años'
-  }
+  },
+  max: {
+    value: 200,
+    message: 'Ingrese una edad válida'
+  },
+  pattern: {
+    value: /\d/,
+    message: 'Ingrese una edad válida'
+  },
+  valueAsNumber: true
 };
 
 const gender = {
